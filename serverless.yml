@@ -22,6 +22,10 @@ provider:
   runtime: java8
   stage: dev
   region: us-east-1
+  memorySize: 256
+  timeout: 3
+  versionFunctions: false
+
 
 # you can overwrite defaults here
 #  stage: dev
@@ -57,6 +61,12 @@ functions:
     events:
       - http:
           path: /
+          method: get
+  functionOne:
+    handler: com.serverless.FunctionOne
+    events:
+      - http:
+          path: /f1
           method: get
 
 #    The following are a few example events you can configure
