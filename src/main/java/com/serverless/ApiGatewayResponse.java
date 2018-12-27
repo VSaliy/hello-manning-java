@@ -1,6 +1,8 @@
 package com.serverless;
 
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.Map;
@@ -90,8 +92,8 @@ public class ApiGatewayResponse {
 		 * encoded as base64. {@link #setBase64Encoded(boolean)
 		 * setBase64Encoded(true)} will be in invoked automatically.
 		 */
-		public Builder setBinaryBody(byte[] binaryBody) {
-			this.binaryBody = binaryBody;
+		public Builder setBinaryBody(final byte[] binaryBody) {
+			this.binaryBody = Arrays.copyOf(binaryBody, binaryBody.length);
 			setBase64Encoded(true);
 			return this;
 		}
